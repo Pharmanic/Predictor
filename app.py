@@ -15,6 +15,7 @@ with open('model.pickle', 'rb') as f:
 
 @app.route('/')
 def home():
+    plt.plot(supplies_forecast)
     output = supplies_forecast
     return render_template('index.html', prediction_text='adsfd  {}'.format(output))
 
@@ -37,9 +38,10 @@ def plot_png():
 
 def create_figure():
     fig = Figure()
+    # fig = plt.plot(supplies_forecast)
     axis = fig.add_subplot(1, 1, 1)
-    xs = range(100)
-    ys = [random.randint(1, 50) for x in xs]
+    xs = range(35)
+    ys = [supplies_forecast for x in xs]
     axis.plot(xs, ys)
     return fig
 
