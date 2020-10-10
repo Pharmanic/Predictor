@@ -6,18 +6,21 @@ import io
 import random
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+import pandas as pd
 
 app = Flask(__name__)
 # model, forecast = pickle.load(open('model.pkl', 'rb'))
 
 with open('model.pickle', 'rb') as f:
-    supplies_test, supplies_forecast = pickle.load(f)
+    supplies_test, supplies_forecast, model = pickle.load(f)
+
+supplies = pd.read_csv('Supplies.csv', parse_dates=[0], index_col=[0])
 
 @app.route('/')
 def home():
-    plt.plot(supplies_forecast)
-    output = supplies_forecast
-    return render_template('index.html', prediction_text='adsfd  {}'.format(output))
+    # output = supplies_forecast
+    output = model.forecast(steps = 35)[0]
+    return render_template('index.html', prediction_text='{}'.format(output))
 
 @app.route('/predict', methods=['POST'])
 def predict():
