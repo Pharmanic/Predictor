@@ -40,9 +40,9 @@ def create_figure():
     fig = Figure()
     # fig = plt.plot(supplies_forecast)
     axis = fig.add_subplot(1, 1, 1)
-    xs = range(35)
-    ys = [supplies_forecast for x in xs]
-    axis.plot(xs, ys)
+    # xs = range(35)
+    # ys = [supplies_forecast for x in xs]
+    axis.plot(supplies_forecast)
     return fig
 
 if __name__ == "__main__":
