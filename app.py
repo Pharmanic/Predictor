@@ -15,11 +15,12 @@ app = Flask(__name__)
 with open('model.pickle', 'rb') as f:
     supplies_test, supplies_forecast, model = pickle.load(f)
 
-supplies = pd.read_csv('Supplies3.csv', parse_dates=[0], index_col=[0])
+supplies = pd.read_csv('Supplies.csv', parse_dates=[0], index_col=[0])
 
 @app.route('/')
 def home():
-    output = supplies_forecast
+    output = supplies.values
+    # output = supplies_forecast
     # output = model.forecast(steps = 35)[0]
     return render_template('index.html', prediction_text='{}'.format(output))
 
@@ -46,7 +47,9 @@ def create_figure():
     axis = fig.add_subplot(1, 1, 1)
     # xs = range(35)
     # ys = [supplies_forecast for x in xs]
-    axis.plot(supplies_forecast)
+    sup_forecast = model.forecast(steps = 35)[0]
+    # axis.plot(supplies_forecast)
+    axis.plot(sup_forecast)
     return fig
 
 if __name__ == "__main__":
