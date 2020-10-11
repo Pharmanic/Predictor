@@ -34,7 +34,7 @@ def predict():
 
     return render_template('index.html', prediction_text='Order amount should be $ ()'.format(output))
 
-@app.route('/plot.png')
+@app.route('/plot_png', methods=['POST'])
 def plot_png():
     fig = create_figure()
     output = io.BytesIO()

@@ -2,20 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>ML API</title>
 </head>
 <body>
-    <div class="login">
-        <h1>Predict Usage Analysis</h1>
-
+    <div class="d-flex flex-column bd-highlight mb-3" style="padding: 2em">
+        <div class="p-2 bd-highlight">
+            <span>
+                <h1 style="align-content: center;">Usage Analysis</h1>
+            </span>
+        </div>
+        <div class="p-2 bd-highlight">
+            <span>
+                <form action="{{ url_for('plot_png') }}" method="POST">
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Input data file</label>
+                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+        
+                    <input class="btn btn-primary" type="submit" value="Submit">
+        
+                </form>
+            </span>
+        </div>
+        
         <!-- <form action="{{ url_for('predict')}}" method="post">
             <input type="text" name="asd" placeholder="asd" />
 
             <button type="submit">Predict</button>
         </form> -->
         
-        <img src="/plot.png" alt="plot" />
+        <img src="/plot_png" alt="plot" />
         {{ prediction_text }}
     </div>
 </body>
