@@ -17,25 +17,26 @@
         <div class="p-2 bd-highlight">
             <span>
                 <form action="{{ url_for('plot_png') }}" method="POST">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="exampleFormControlFile1">Input data file</label>
                       <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="inputSteps">Number of steps</label>
+                        <input type="text" name="steps" class="form-control" id="inputSteps" aria-describedby="textHelp">
+                        <small id="emailHelp" class="form-text text-muted">Enter number of steps.</small>
+                      </div>
         
-                    <input class="btn btn-primary" type="submit" value="Submit">
+                    <input class="btn btn-primary" type="submit" value="Show graph">
         
                 </form>
             </span>
         </div>
         
-        <!-- <form action="{{ url_for('predict')}}" method="post">
-            <input type="text" name="asd" placeholder="asd" />
-
-            <button type="submit">Predict</button>
-        </form> -->
         
-        <img src="/plot_png" alt="plot" />
-        {{ prediction_text }}
+        
+        <!-- <img src="/plot_png" alt="plot" /> -->
+        <!-- {{ prediction_text }} -->
     </div>
 </body>
 </html>
